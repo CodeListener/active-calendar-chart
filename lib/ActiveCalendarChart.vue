@@ -1,39 +1,41 @@
 <template>
   <div class="active-calendar-chart">
-    <table :style="tableStyle">
-      <thead>
-        <tr>
-          <th class="first-grid" :style="thStyle">
-            <slot name="first-grid" />
-          </th>
-          <th class="month" v-for="item in result.headers" :colspan="item.span" :style="thStyle">
-            <slot name="month" :item="item" :list="result.headers">
-              <span>{{ item.span <= 3 ? "" : MonthMap[item.month] }}</span>
-            </slot>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(row, index) in result.rows">
-          <td class="week" :style="tdStyle">
-            <slot name="week" :item="index">
-              <span :style="{ paddingRight: '10px' }" v-show="index % 2 !== 0">{{ DayMap[index] }}</span>
-            </slot>
-          </td>
-          <td class="date" v-for="col in row" :data-date="col.date" :style="tdStyle">
-            <slot :item="col" :row="row" :all="result.rows">
-              <div :style="[gridStyle, { backgroundColor: col.isEmpty ? 'transparent' : value?.[col.date]?.color ?? defaultColor }]" />
-            </slot>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div v-if="!!descripton || colors.length" class="tfoot" :style="tFootStyle">
-      <div class="description">{{ descripton }}</div>
-      <div class="colors" :style="tFootRightStyle" v-show="colors?.length">
-        <span>{{ less }}</span>
-        <span v-for="color in colors" class="grid" :style="[gridStyle, { backgroundColor: color, marginLeft: '4px' }]"></span>
-        <span :style="{ marginLeft: '4px' }">{{ more }}</span>
+    <div class="wrapper" :style="tableWrapper">
+      <table :style="tableStyle">
+        <thead>
+          <tr>
+            <th class="first-grid" :style="thStyle">
+              <slot name="first-grid" />
+            </th>
+            <th class="month" v-for="item in result.headers" :colspan="item.span" :style="thStyle">
+              <slot name="month" :item="item" :list="result.headers">
+                <span>{{ item.span <= 3 ? "" : MonthMap[item.month] }}</span>
+              </slot>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, index) in result.rows">
+            <td class="week" :style="tdStyle">
+              <slot name="week" :item="index">
+                <span :style="{ paddingRight: '10px' }" v-show="index % 2 !== 0">{{ DayMap[index] }}</span>
+              </slot>
+            </td>
+            <td class="date" v-for="col in row" :data-date="col.date" :style="tdStyle">
+              <slot :item="col" :row="row" :all="result.rows">
+                <div :style="[gridStyle, { backgroundColor: col.isEmpty ? 'transparent' : value?.[col.date]?.color ?? defaultColor }]" />
+              </slot>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div v-if="!!descripton || colors.length" class="tfoot" :style="tFootStyle">
+        <div class="description">{{ descripton }}</div>
+        <div class="colors" :style="tFootRightStyle" v-show="colors?.length">
+          <span>{{ less }}</span>
+          <span v-for="color in colors" class="grid" :style="[gridStyle, { backgroundColor: color, marginLeft: '4px' }]"></span>
+          <span :style="{ marginLeft: '4px' }">{{ more }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -75,6 +77,10 @@ const result = computed(() => {
 /**
  * style
  */
+const tableWrapper: StyleValue = {
+  display: "inline-block",
+  flexDirection: "column",
+};
 const gridStyle = computed<StyleValue>(() => ({
   width: props.grid.width,
   height: props.grid.height,
