@@ -6,7 +6,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
     lib: {
-      formats: ["es", "umd"],
+      formats: ["es", "umd", "iife"],
       entry: resolve(__dirname, "./lib/index.ts"),
       name: "ActiveCalendarChart",
       fileName: "index",
@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: {
       external: ["vue"],
       output: {
+        exports: "named",
         globals: {
           vue: "Vue",
         },
@@ -25,7 +26,7 @@ export default defineConfig({
     dts({
       outputDir: resolve(__dirname, "dist/types"),
       include: "./lib",
-      exclude: ["vite-env.d.ts"],
+      exclude: ["vite-env.d.ts", "./lib/utils.ts"],
     }),
   ],
 });
