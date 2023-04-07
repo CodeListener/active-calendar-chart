@@ -1,0 +1,48 @@
+{
+  "name": "active-calendar-chart",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeListener/active-calendar-chart.git"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "description": "contribution calendar component like github (based on vue)",
+  "keywords": [
+    "vue",
+    "typescript",
+    "component",
+    "active",
+    "calendar",
+    "chart"
+  ],
+  "author": "CodeListener <codelistener@163.com> https://github.com/CodeListener",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeListener/active-calendar-chart/issues"
+  },
+  "homepage": "https://github.com/CodeListener/active-calendar-chart",
+  "scripts": {
+    "dev": "pnpm -C example run dev",
+    "build": "tsc && vite build",
+    "preview": "pnpm -C example run preview"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vite-plugin-dts": "^2.2.0",
+    "vue-tsc": "^1.0.24"
+  },
+  "dependencies": {
+    "vue": "^3.2.45"
+  }
+}
