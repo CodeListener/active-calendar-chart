@@ -14,7 +14,7 @@
 
 | 参数          | 描述             | 类型                                              | 默认值                             | 是否必填 |
 | ------------- | ---------------- | ------------------------------------------------- | ---------------------------------- | -------- |
-| value         | 数据源           | `{[key:string]: { value: number; color: string}}` | `{}`                               | 是       |
+| value         | 数据源           | `{[key:string]: { value: number; color: string}}` | `{}`                               | 否       |
 | text-align    | 表格文本排列     | `left \| right \| center`                         | `left`                             | 否       |
 | date          | 日期             | `number \| { start: string; end: string }`        | `undefined`                        | 否       |
 | default-color | 设置默认格子颜色 | `string`                                          | `#ebedf0`                          | 否       |

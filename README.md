@@ -14,7 +14,7 @@ contribution calendar component like github (based on vue)
 
 | Prop          | Description               | Type                                              | Default                            | Required |
 | ------------- | ------------------------- | ------------------------------------------------- | ---------------------------------- | -------- |
-| value         | datasource                | `{[key:string]: { value: number; color: string}}` | `{}`                               | Yes      |
+| value         | datasource                | `{[key:string]: { value: number; color: string}}` | `{}`                               | No      |
 | text-align    | textAlign                 | `left \| right \| center`                         | `left`                             | No       |
 | date          | date value                | `number \| { start: string; end: string }`        | `undefined`                        | No       |
 | default-color | set grid default color    | `string`                                          | `#ebedf0`                          | No       |

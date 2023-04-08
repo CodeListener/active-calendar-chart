@@ -46,7 +46,7 @@ import generateChartData, { DayMap, MonthMap } from "./core";
 
 const props = withDefaults(
   defineProps<{
-    value: { [key: string]: { value: number; color: string } };
+    value?: { [key: string]: { value: number; color: string } };
     textAlign?: "left" | "center" | "right";
     date?: number | { start: string; end: string };
     defaultColor?: string;
@@ -57,6 +57,7 @@ const props = withDefaults(
     descripton?: string;
   }>(),
   {
+    value: () => ({}),
     textAlign: "left",
     date: undefined,
     defaultColor: "#ebedf0",
@@ -89,6 +90,7 @@ const tableStyle = computed<StyleValue>(() => ({
   textAlign: props.textAlign,
   fontSize: "12px",
   color: "#1f2328",
+  borderCollapse: "separate",
 }));
 const thStyle: StyleValue = {
   paddingBottom: "4px",
